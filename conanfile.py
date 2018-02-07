@@ -6,8 +6,8 @@ class CerealConan(ConanFile):
     name = "cereal"
     version = "1.2.2"
     description = "Serialization header-only library for C++11."
-    exports_sources = ["LICENSE"]
-    license = "Boost Software License 1.0"
+    license = "BSD-3"
+    no_copy_source = True
     source_subfolder = "sources"
     url = "https://github.com/USCiLab/cereal"
 
@@ -17,9 +17,10 @@ class CerealConan(ConanFile):
         os.rename("%s-%s" % (self.name, self.version, ), self.source_subfolder)
 
     def package(self):
-        self.copy("*LICENSE*", dst="licenses", src="sources")
-        self.copy("*.h", dst=".", src="sources")
-        self.copy("*.hpp", dst=".", src="sources")
+        src_include = os.path.join(self.source_subfolder, "include")
+        self.copy("*.h", dst="include", src=src_include)
+        self.copy("*.hpp", dst="include", src=src_include)
+        self.copy("*LICENSE*", dst="licenses", src=self.source_subfolder)
 
     def package_id(self):
         self.info.header_only()
