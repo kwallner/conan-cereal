@@ -11,6 +11,7 @@ class CerealConan(ConanFile):
     options = {"thread_safe": [True, False]}
     default_options = "thread_safe=False"
     source_subfolder = "sources"
+    settings = "os"
     url = "https://github.com/USCiLab/cereal"
 
     def source(self):
@@ -28,5 +29,6 @@ class CerealConan(ConanFile):
         self.info.header_only()
 
     def package_info(self):
-        if self.options.thread_safe:
-            self.cpp_info.defines = ["THREAD_SAFE=1"]
+        if self.options.thread_safe and self.settings.os != "Windows":
+            self.cpp_info.defines = ["CEREAL_THREAD_SAFE=1"]
+            self.cpp_info.libs = ["pthread"]

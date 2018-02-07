@@ -1,4 +1,5 @@
 #include <fstream>
+#include <iostream>
 #include "cereal/types/unordered_map.hpp"
 #include "cereal/types/memory.hpp"
 #include "cereal/archives/binary.hpp"
@@ -42,6 +43,12 @@ int main()
 
   SomeData myData;
   archive( myData );
+
+#if CEREAL_THREAD_SAFE
+    std::cout << "Cereal Thread safe is enabled" << std::endl;
+#else
+    std::cout << "Cereal Thread safe is disabled" << std::endl;
+#endif
 
   return 0;
 }
