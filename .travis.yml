@@ -1,3 +1,14 @@
+
+env:
+   global:
+     - CONAN_REFERENCE: "cereal/1.2.2"
+     - CONAN_USERNAME: "conan"
+     - CONAN_LOGIN_USERNAME: "conanbot"
+     - CONAN_CHANNEL: "testing"
+     - CONAN_UPLOAD: "https://api.bintray.com/conan/conan-community/conan"
+     - CONAN_STABLE_BRANCH_PATTERN: "stable/*"
+     - CONAN_UPLOAD_ONLY_WHEN_STABLE: 1 # Will only upload when the branch matches "release/*"
+
 linux: &linux
    os: linux
    sudo: required
@@ -5,6 +16,9 @@ linux: &linux
    python: "3.6"
    services:
      - docker
+osx: &osx
+   os: osx
+   language: generic
 matrix:
    include:
 
