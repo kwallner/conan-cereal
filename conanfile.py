@@ -1,4 +1,4 @@
-from conans import ConanFile, CMake, tools
+from conans import ConanFile, tools
 import os
 
 
@@ -8,6 +8,8 @@ class CerealConan(ConanFile):
     description = "Serialization header-only library for C++11."
     license = "BSD-3"
     no_copy_source = True
+    options = {"thread_safe": [True, False]}
+    default_options = "thread_safe=False"
     source_subfolder = "sources"
     url = "https://github.com/USCiLab/cereal"
 
@@ -24,3 +26,7 @@ class CerealConan(ConanFile):
 
     def package_id(self):
         self.info.header_only()
+
+    def package_info(self):
+        if self.options.thread_safe:
+            self.cpp_info.defines = ["THREAD_SAFE=1"]
