@@ -47,7 +47,7 @@ int main()
 #if CEREAL_THREAD_SAFE
     std::cout << "Cereal Thread safe is enabled" << std::endl;
 #else
-    std::cout << "Cereal Thread safe is disabled" << std::endl;
+    throw std::runtime_error("Cereal Thread safe is disabled but should be enabled");
 #endif
 
   return 0;
