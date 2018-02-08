@@ -1,5 +1,7 @@
 # conan-cereal
 
+![conan-cereal image](/images/conan-cereal.png)
+
 [ ![Download](https://api.bintray.com/packages/conan-community/conan/cereal%3Aconan/images/download.svg?version=1.2.2%3Astable) ](https://bintray.com/conan-community/conan/cereal%3Aconan/1.2.2%3Astable/link)
 [![Build Status](https://travis-ci.org/conan-community/conan-cereal.svg?branch=stable%2F1.2.2)](https://travis-ci.org/conan-community/conan-cereal)
 
