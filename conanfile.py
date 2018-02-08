@@ -18,14 +18,13 @@ class CerealConan(ConanFile):
     def source(self):
         source_url = ("%s/archive/v%s.zip" % (self.homepage, self.version))
         tools.get(source_url)
-        os.rename("%s-%s" % (self.name, self.version, ), self.source_subfolder)
+        os.rename("%s-%s" % (self.name, self.version), self.source_subfolder)
 
     def package(self):
-        src_include = os.path.join(self.source_subfolder, "include")
-        self.copy("*.h", dst="include", src=src_include)
-        self.copy("*.hpp", dst="include", src=src_include)
-        self.copy("*LICENSE*", dst="licenses", src=self.source_subfolder)
-
+        self.copy("LICENSE", dst="LICENSE.txt", src=self.source_subfolder)
+        self.copy("README.md", dst="README.md", src=self.source_subfolder)
+        self.copy(pattern="*", dst="include/cereal", src=os.path.join(self.source_subfolder, "include", "cereal"))
+ 
     def package_id(self):
         self.info.header_only()
 
