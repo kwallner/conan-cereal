@@ -12,7 +12,8 @@ class CerealConan(ConanFile):
     options = {"thread_safe": [True, False]}
     default_options = "thread_safe=False"
     source_subfolder = "sources"
-    url = "https://github.com/conan-community/conan-cereal"
+    exports_sources = [ "FindCereal.cmake" ]
+    url = "https://github.com/kwallner/conan-cereal"
 
     def source(self):
         source_url = ("%s/archive/v%s.zip" % (self.homepage, self.version))
@@ -31,3 +32,4 @@ class CerealConan(ConanFile):
     def package_info(self):
         if self.options.thread_safe:
             self.cpp_info.defines = ["CEREAL_THREAD_SAFE=1"]
+        self.env_info.CEREAL_ROOT = self.package_folder
