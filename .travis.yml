@@ -21,7 +21,7 @@ matrix:
    include:
 
       - <<: *linux
-        env: CONAN_GCC_VERSIONS=7 CONAN_DOCKER_IMAGE=lasote/conangcc7
+        env: CONAN_GCC_VERSIONS=5 CONAN_DOCKER_IMAGE=lasote/conangcc5
 
 install:
   - chmod +x .travis/install.sh
