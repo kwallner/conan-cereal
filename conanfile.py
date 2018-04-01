@@ -23,6 +23,7 @@ class CerealConan(ConanFile):
     def package(self):
         self.copy("LICENSE", dst="LICENSE.txt", src=self.source_subfolder)
         self.copy("README.md", dst="README.md", src=self.source_subfolder)
+        self.copy("FindCereal.cmake", dst=".", src=self.source_folder)
         self.copy(pattern="*", dst="include/cereal", src=os.path.join(self.source_subfolder, "include", "cereal"))
  
     def package_id(self):
